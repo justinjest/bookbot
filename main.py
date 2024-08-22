@@ -1,7 +1,14 @@
 def main():
     with open("books/frankenstein.txt") as f:
         file_contents = f.read()
-        print (count_letters(file_contents, True))
+        print (f"--- Begin report of books/frankenstein.txt ---")
+        print ("\n")
+        letter_count = count_letters(file_contents,True)
+        word_count = count_words(file_contents)
+        print (f"{word_count} words found in the document")
+        for i in letter_count:
+            print (f"The '{i}' charcter was found {letter_count[i]} times")
+        print ("--- End report ---")
 
 def count_words(string):
     words = string.split()
@@ -24,7 +31,7 @@ def count_letters(string, sorted_return=False):
         'l':0,
         'm':0,
         'n':0,
-        '0':0,
+        'o':0,
         'p':0,
         'q':0,
         'r':0,
