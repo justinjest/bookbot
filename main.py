@@ -1,13 +1,13 @@
 def main():
     with open("books/frankenstein.txt") as f:
         file_contents = f.read()
-        print (count_letters(file_contents))
+        print (count_letters(file_contents, True))
 
 def count_words(string):
     words = string.split()
     return (len(words))
 
-def count_letters(string):
+def count_letters(string, sorted_return=False):
     # Counts upper and lower case the same
     alphabet = {
         'a':0,
@@ -39,5 +39,8 @@ def count_letters(string):
     for i in string.lower():
         if i in alphabet:
             alphabet[i] = alphabet[i] + 1
+    if sorted_return == True:
+        # From stackoverflow https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
+        return (dict(sorted(alphabet.items(), key=lambda item: item[1], reverse=True)))
     return alphabet
 main()
